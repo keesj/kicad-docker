@@ -13,9 +13,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 
 RUN mkdir -p /opt \
   && cd /opt \
-  && git clone --depth 1 -b master https://git.launchpad.net/kicad
+  && git clone --depth 1 -b 5.1 https://github.com/KiCad/kicad-source-mirror.git kicad
 
-RUN cd /opt/kicad/scripts \
+RUN cd /opt/kicad/scripting/build_tools \
   && chmod +x get_libngspice_so.sh \
   && ./get_libngspice_so.sh \
   && ./get_libngspice_so.sh install
