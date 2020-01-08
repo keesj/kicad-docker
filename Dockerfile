@@ -13,7 +13,16 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 
 RUN mkdir -p /opt \
   && cd /opt \
-  && git clone --depth 1 -b 5.1 https://github.com/KiCad/kicad-source-mirror.git kicad
+  && git clone --depth 1 -b master https://github.com/KiCad/kicad-source-mirror.git kicad
+
+RUN mkdir -p /opt \
+  && cd /opt \
+  && git clone https://github.com/KiCad/kicad-symbols.git symbols \
+  && mkdir -p symbols/build/release \
+  && cd symbols/build/release \
+  && cmake -DCMAKE_BUILD_TYPE=Release ../.. \
+  && make \
+  && make install
 
 RUN cd /opt/kicad/scripting/build_tools \
   && chmod +x get_libngspice_so.sh \
