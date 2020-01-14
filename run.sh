@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "*** UNSAFE XHOST USAGE ***"
 xhost +
 
 docker run -it --rm \
